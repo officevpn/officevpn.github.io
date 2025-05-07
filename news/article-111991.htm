@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://officevpn.github.io/news/article-111991.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>深入分析与解决V2Ray协议无法下载文件的问题</title>
+        <meta name="description" content="随着网络科技的不断发展，科学上网工具成为了许多互联网用户必不可少的工具之一。V2Ray作为其中的佼佼者，凭借其强大的功能和高度的灵活性，赢得了广泛的使用。然而，尽管V2Ray具有诸多优点，很多用户在使" />
+        <link rel="icon" href="/assets/website/img/clashvergenode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="办公VPN订阅中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://officevpn.github.io/news/article-111991.htm" />
+    <meta property="og:site_name" content="办公VPN订阅中文网" />
+    <meta property="og:title" content="深入分析与解决V2Ray协议无法下载文件的问题" />
+    <meta property="og:image" content="https://officevpn.github.io/uploads/20240519/80c6d0dd2ab544f0c6c67fa524e90a3f.webp" />
+        <meta property="og:release_date" content="2025-05-05T09:01:29" />
+    <meta property="og:updated_time" content="2025-05-05T09:01:29" />
+        <meta property="og:description" content="随着网络科技的不断发展，科学上网工具成为了许多互联网用户必不可少的工具之一。V2Ray作为其中的佼佼者，凭借其强大的功能和高度的灵活性，赢得了广泛的使用。然而，尽管V2Ray具有诸多优点，很多用户在使" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashvergenode/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashvergenode/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashvergenode/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashvergenode/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashvergenode/main.css" />
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="深入分析与解决V2Ray协议无法下载文件的问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSEYC64EZK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NSEYC64EZK');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+<!-- ========================= preloader start ========================= -->
+<div class="preloader">
+    <div class="loader">
+        <div class="spinner">
+            <div class="spinner-container">
+                <div class="spinner-rotator">
+                    <div class="spinner-left">
+                        <div class="spinner-circle"></div>
+                    </div>
+                    <div class="spinner-right">
+                        <div class="spinner-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- preloader end -->
+<!-- ========================= header start ========================= -->
+<header class="header">
+    <div class="navbar-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="/">
+                                                    <span>办公VPN</span>
+                                                </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <ul id="nav" class="navbar-nav ms-auto">
+                                                                <li class="nav-item">
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li class="nav-item">
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li class="nav-item">
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li class="nav-item">
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                        <!-- navbar collapse -->
+                    </nav>
+                    <!-- navbar -->
+                </div>
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+    </div>
+    <!-- navbar area -->
+</header>
+<!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="category" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="wow fadeInUp" data-wow-delay=".4s">
+                            深入分析与解决V2Ray协议无法下载文件的问题                        </h1>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+                        <img src="/assets/website/img/clashvergenode/hero/hero-img.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section pt-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                    
+<p data-start="27" data-end="161" class="">随着网络科技的不断发展，科学上网工具成为了许多互联网用户必不可少的工具之一。V2Ray作为其中的佼佼者，凭借其强大的功能和高度的灵活性，赢得了广泛的使用。然而，尽管V2Ray具有诸多优点，很多用户在使用该工具时会遇到下载文件无法成功的情况，这无疑会影响用户的网络体验。</p>
+<p data-start="163" data-end="231" class="">本文将深入探讨V2Ray协议在下载过程中可能遇到的各种问题，并提供详细的解决方案，帮助用户有效排除故障，确保网络连接顺畅，文件下载成功。</p>
+<h2 data-start="233" data-end="247" class="">什么是V2Ray协议？</h2>
+<p data-start="249" data-end="360" class="">V2Ray是一种用于科学上网的工具，主要用于突破网络封锁，帮助用户自由访问全球互联网资源。V2Ray的独特之处在于，它支持多种协议与加密方式，能够有效地保护用户的隐私并绕过互联网服务提供商的限制。V2Ray的主要功能包括：</p>
+<ul data-start="362" data-end="490">
+<li data-start="362" data-end="401" class="" style="">
+<p data-start="364" data-end="401" class=""><strong data-start="364" data-end="372">隐私保护</strong>：通过加密用户的网络流量，确保个人数据安全，防止隐私泄露。</p>
+</li>
+<li data-start="402" data-end="445" class="" style="">
+<p data-start="404" data-end="445" class=""><strong data-start="404" data-end="414">绕过网络限制</strong>：帮助用户访问被屏蔽的网站和应用，无论是社交媒体还是新闻网站。</p>
+</li>
+<li data-start="446" data-end="490" class="" style="">
+<p data-start="448" data-end="490" class=""><strong data-start="448" data-end="456">灵活配置</strong>：支持多种配置方式，用户可以根据网络环境自由调整设置，满足不同需求。</p>
+</li>
+</ul>
+<p data-start="492" data-end="568" class="">尽管V2Ray具有如此多的优点，很多用户仍然会遇到在使用V2Ray协议时无法下载文件的问题。接下来，我们将逐一探讨可能导致该问题的原因，并提供解决方案。</p>
+<h2 data-start="570" data-end="591" class="">V2Ray协议无法下载文件的常见原因</h2>
+<h3 data-start="593" data-end="606" class="">1. 网络连接问题</h3>
+<p data-start="608" data-end="684" class="">在使用V2Ray协议时，首先要保证网络连接的稳定性。许多用户在下载文件时遇到的第一个问题就是网络不稳定或配置不当导致的连接中断。常见的网络连接问题包括：</p>
+<ul data-start="686" data-end="792">
+<li data-start="686" data-end="733" class="" style="">
+<p data-start="688" data-end="733" class=""><strong data-start="688" data-end="698">不稳定的网络</strong>：如果您的互联网连接本身不稳定，可能会导致下载中途停止或完全无法连接。</p>
+</li>
+<li data-start="734" data-end="792" class="" style="">
+<p data-start="736" data-end="792" class=""><strong data-start="736" data-end="747">DNS解析失败</strong>：DNS（域名系统）解析失败可能会导致无法访问某些网站或下载链接，从而影响文件的下载过程。</p>
+</li>
+</ul>
+<h3 data-start="794" data-end="810" class="">2. V2Ray配置错误</h3>
+<p data-start="812" data-end="859" class="">V2Ray的配置需要精准无误，否则可能导致下载无法顺利进行。配置错误通常会表现为以下几种形式：</p>
+<ul data-start="861" data-end="994">
+<li data-start="861" data-end="929" class="" style="">
+<p data-start="863" data-end="929" class=""><strong data-start="863" data-end="873">配置文件错误</strong>：如果V2Ray的配置文件设置不当，服务器信息、端口号或用户ID错误，可能会导致无法建立连接，进而无法下载文件。</p>
+</li>
+<li data-start="930" data-end="994" class="" style="">
+<p data-start="932" data-end="994" class=""><strong data-start="932" data-end="943">端口设置不正确</strong>：V2Ray服务器的端口设置必须与实际服务器一致。如果端口设置错误，V2Ray将无法正常连接到服务器。</p>
+</li>
+</ul>
+<h3 data-start="996" data-end="1013" class="">3. 防火墙或安全软件干扰</h3>
+<p data-start="1015" data-end="1054" class="">防火墙和安全软件有时会阻止V2Ray的流量，造成下载失败。常见的干扰因素包括：</p>
+<ul data-start="1056" data-end="1162">
+<li data-start="1056" data-end="1108" class="" style="">
+<p data-start="1058" data-end="1108" class=""><strong data-start="1058" data-end="1067">防火墙设置</strong>：某些防火墙可能会自动拦截或屏蔽V2Ray的流量，特别是一些安全级别较高的防火墙。</p>
+</li>
+<li data-start="1109" data-end="1162" class="" style="">
+<p data-start="1111" data-end="1162" class=""><strong data-start="1111" data-end="1122">安全软件的误判</strong>：一些安全软件可能会将V2Ray的流量误认为是恶意流量，因此自动拦截或阻止连接。</p>
+</li>
+</ul>
+<h3 data-start="1164" data-end="1176" class="">4. 服务器问题</h3>
+<p data-start="1178" data-end="1259" class="">V2Ray的稳定性和下载速度不仅仅与客户端的设置有关，还与服务器的状态密切相关。如果您所使用的V2Ray服务器不稳定，也可能会导致下载失败。常见的服务器问题包括：</p>
+<ul data-start="1261" data-end="1365">
+<li data-start="1261" data-end="1309" class="" style="">
+<p data-start="1263" data-end="1309" class=""><strong data-start="1263" data-end="1273">服务器不稳定</strong>：如果V2Ray服务器频繁掉线或出现过载，可能会导致下载中断或速度缓慢。</p>
+</li>
+<li data-start="1310" data-end="1365" class="" style="">
+<p data-start="1312" data-end="1365" class=""><strong data-start="1312" data-end="1323">服务器带宽限制</strong>：某些V2Ray服务器可能会对带宽进行限制，这会直接影响下载速度，甚至造成下载失败。</p>
+</li>
+</ul>
+<h2 data-start="1367" data-end="1388" class="">解决V2Ray协议无法下载文件的问题</h2>
+<p data-start="1390" data-end="1432" class="">针对以上列举的常见问题，下面将提供一些解决方案，帮助用户有效排查问题并恢复正常下载。</p>
+<h3 data-start="1434" data-end="1447" class="">1. 检查网络连接</h3>
+<p data-start="1449" data-end="1492" class="">首先要确保网络连接的稳定性，这通常是导致下载失败的根本原因。以下是一些可能的解决方法：</p>
+<ul data-start="1494" data-end="1692">
+<li data-start="1494" data-end="1540" class="" style="">
+<p data-start="1496" data-end="1540" class=""><strong data-start="1496" data-end="1505">重启路由器</strong>：如果您的网络连接不稳定，尝试重启路由器或切换到其他网络环境进行测试。</p>
+</li>
+<li data-start="1541" data-end="1600" class="" style="">
+<p data-start="1543" data-end="1600" class=""><strong data-start="1543" data-end="1558">使用不同的网络进行测试</strong>：如果您在使用某个Wi-Fi网络时遇到问题，尝试连接到其他网络，确认是否为网络问题。</p>
+</li>
+<li data-start="1601" data-end="1692" class="" style="">
+<p data-start="1603" data-end="1692" class=""><strong data-start="1603" data-end="1614">检查DNS设置</strong>：尝试更改DNS服务器地址为公共DNS，如Google的DNS（8.8.8.8）或Cloudflare的DNS（1.1.1.1），以解决DNS解析失败问题。</p>
+</li>
+</ul>
+<h3 data-start="1694" data-end="1712" class="">2. 检查V2Ray配置文件</h3>
+<p data-start="1714" data-end="1771" class="">如果网络连接没有问题，接下来需要检查V2Ray的配置文件。配置错误是导致无法下载文件的常见原因之一。解决方法如下：</p>
+<ul data-start="1773" data-end="1948">
+<li data-start="1773" data-end="1837" class="" style="">
+<p data-start="1775" data-end="1837" class=""><strong data-start="1775" data-end="1785">检查配置文件</strong>：使用文本编辑器打开V2Ray的配置文件，仔细检查各项设置，确保服务器地址、端口号、用户ID等参数无误。</p>
+</li>
+<li data-start="1838" data-end="1892" class="" style="">
+<p data-start="1840" data-end="1892" class=""><strong data-start="1840" data-end="1850">恢复默认配置</strong>：如果您不确定配置文件的正确性，可以尝试将配置恢复到默认状态，排除配置错误的可能性。</p>
+</li>
+<li data-start="1893" data-end="1948" class="" style="">
+<p data-start="1895" data-end="1948" class=""><strong data-start="1895" data-end="1907">使用官方配置模板</strong>：从V2Ray的官方网站或信任的服务提供商获取最新的配置文件，并按照模板进行配置。</p>
+</li>
+</ul>
+<h3 data-start="1950" data-end="1969" class="">3. 调整防火墙和安全软件设置</h3>
+<p data-start="1971" data-end="2008" class="">有时防火墙和安全软件可能会干扰V2Ray的正常运行。以下是可能的解决方案：</p>
+<ul data-start="2010" data-end="2144">
+<li data-start="2010" data-end="2068" class="" style="">
+<p data-start="2012" data-end="2068" class=""><strong data-start="2012" data-end="2023">检查防火墙设置</strong>：确保防火墙允许V2Ray通过所需的端口进行通信。如果不确定，可以暂时禁用防火墙进行测试。</p>
+</li>
+<li data-start="2069" data-end="2144" class="" style="">
+<p data-start="2071" data-end="2144" class=""><strong data-start="2071" data-end="2083">暂时禁用安全软件</strong>：一些安全软件可能会将V2Ray流量误判为恶意流量，导致下载中断。可以尝试暂时禁用安全软件，测试是否为软件干扰造成的问题。</p>
+</li>
+</ul>
+<h3 data-start="2146" data-end="2163" class="">4. 更换V2Ray服务器</h3>
+<p data-start="2165" data-end="2220" class="">如果上述方法都无法解决问题，那么很可能是由于服务器的问题导致的下载失败。此时，您可以尝试更换服务器来解决问题：</p>
+<ul data-start="2222" data-end="2352">
+<li data-start="2222" data-end="2273" class="" style="">
+<p data-start="2224" data-end="2273" class=""><strong data-start="2224" data-end="2238">更换服务器地址和端口</strong>：在V2Ray配置文件中更换不同的服务器地址和端口，测试连接是否稳定。</p>
+</li>
+<li data-start="2274" data-end="2352" class="" style="">
+<p data-start="2276" data-end="2352" class=""><strong data-start="2276" data-end="2290">选择稳定性高的服务器</strong>：选择质量较高、带宽充足的V2Ray服务器进行连接，避免使用免费或低质量的服务器，这些服务器往往存在带宽限制或不稳定的问题。</p>
+</li>
+</ul>
+<h2 data-start="2354" data-end="2363" class="">常见问题解答</h2>
+<h3 data-start="2365" data-end="2384" class="">Q1: V2Ray协议是什么？</h3>
+<p data-start="2386" data-end="2466" class="">A1: V2Ray是一种用于科学上网的工具，支持多种传输协议和加密方式，能够有效保护用户的隐私并绕过网络限制。它允许用户通过代理服务器进行加密通信，确保安全性。</p>
+<h3 data-start="2468" data-end="2491" class="">Q2: 如何检查V2Ray的配置文件？</h3>
+<p data-start="2493" data-end="2556" class="">A2: 使用文本编辑器打开V2Ray的配置文件，检查服务器地址、端口号、用户ID等配置项，确保它们与服务提供商提供的配置一致。</p>
+<h3 data-start="2558" data-end="2582" class="">Q3: 为什么我的V2Ray连接不稳定？</h3>
+<p data-start="2584" data-end="2627" class="">A3: 连接不稳定可能是由于网络问题、服务器不稳定、配置错误或防火墙设置等原因造成的。</p>
+<h3 data-start="2629" data-end="2650" class="">Q4: 如何更换V2Ray服务器？</h3>
+<p data-start="2652" data-end="2702" class="">A4: 在V2Ray的配置文件中修改服务器地址和端口，保存配置后重启V2Ray客户端即可更换服务器。</p>
+<h2 data-start="2704" data-end="2709" class="">结语</h2>
+<p data-start="2711" data-end="2826" class="">V2Ray协议作为一款强大的翻墙工具，能帮助用户突破互联网限制，访问全球网络资源。然而，在使用过程中，下载问题的出现并不罕见。通过本文介绍的解决方法，您可以有效排查和解决V2Ray无法下载文件的常见问题，恢复稳定、流畅的下载体验。</p>
+<p data-start="2828" data-end="2914" class="">在解决V2Ray下载问题时，用户应该注意逐一排查网络连接、配置文件、防火墙设置以及服务器的稳定性等因素。希望本文的建议能够帮助您快速解决问题，享受更加安全、顺畅的网络体验。</p>                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-111990.htm">深入探讨V2Ray证书检测的重要性与实施方法</a></p>
+                                        <p>下一个：<a href="/news/article-112348.htm">科学上网的隐秘代价：数据安全真相与防护策略全解析</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-107984.htm" title="如何配置v2rayng进行科学上网：详细指南与常见问题解答">如何配置v2rayng进行科学上网：详细指南与常见问题解答</a></li>
+                        <li class="py-2"><a href="/news/article-104662.htm" title="V2Ray免流技术与SSR免流技术的全面对比：哪种更优？">V2Ray免流技术与SSR免流技术的全面对比：哪种更优？</a></li>
+                        <li class="py-2"><a href="/news/article-100531.htm" title="安卓手机如何使用Clash：详细指南与优化技巧">安卓手机如何使用Clash：详细指南与优化技巧</a></li>
+                        <li class="py-2"><a href="/news/article-108811.htm" title="解锁无限娱乐边界：PS4科学上网终极教程详解">解锁无限娱乐边界：PS4科学上网终极教程详解</a></li>
+                        <li class="py-2"><a href="/news/article-107989.htm" title="完全指南：梅林插件科学上网的安装与配置">完全指南：梅林插件科学上网的安装与配置</a></li>
+                        <li class="py-2"><a href="/news/article-102095.htm" title="深入解析安卓V2Ray常见问题与解决方案">深入解析安卓V2Ray常见问题与解决方案</a></li>
+                        <li class="py-2"><a href="/news/article-100686.htm" title="深入解析速云Clash：全方位使用教程与优化配置技巧">深入解析速云Clash：全方位使用教程与优化配置技巧</a></li>
+                        <li class="py-2"><a href="/news/article-102094.htm" title="如何使用Google Home进行科学上网：一步步设置指南与实用技巧">如何使用Google Home进行科学上网：一步步设置指南与实用技巧</a></li>
+                        <li class="py-2"><a href="/news/article-112349.htm" title="羊肉串的魅力与挑战：探讨美食文化中的冲突">羊肉串的魅力与挑战：探讨美食文化中的冲突</a></li>
+                        <li class="py-2"><a href="/news/article-109647.htm" title="iOS设备科学上网终极指南：从工具下载到配置实践全流程详解">iOS设备科学上网终极指南：从工具下载到配置实践全流程详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">14</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copy-right">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    办公VPN订阅中文网 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashvergenode/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashvergenode/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashvergenode/count-up.min.js"></script>
+    <script src="/assets/website/js/frontend/clashvergenode/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashvergenode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashvergenode/polifill.js"></script>
+    <script src="/assets/website/js/frontend/clashvergenode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
